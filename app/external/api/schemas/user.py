@@ -5,11 +5,27 @@ class UserBase(BaseModel):
     username: str
     email: EmailStr
     type:  Literal['Operator', 'Investor']
+    
+    
+    
 
 
 
 class UserInput(UserBase):
     password: str
+    
+    model_config = {
+        "json_schema_extra": {
+            "examples": [
+                {
+                    "username": "Fernanda Gonzales",
+                    "email": "fernanda01@gmail.com",
+                    "type": "Operator || Investor",
+                    "pasword": "fernanda01Investor"
+                }
+            ]
+        }
+    }
     
 
 class UserOutput(UserBase):
