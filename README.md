@@ -47,7 +47,7 @@ Swagger UI para mostrar los end-points.
 Para correr los test disponibles de la aplicacion deberas moverte al directorio **tests**
 
 ```
-Sistema-de-subasta-basico/tests
+cd Sistema-de-subasta-basico/tests
 ```
 y luego ejecutar el comando: 
 ```
