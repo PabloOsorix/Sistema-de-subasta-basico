@@ -12,7 +12,8 @@ class BidService():
     """
     Maneja la lógica de negocio relacionada con las ofertas (bids) y las interacciones entre usuarios y operaciones.
     """
-    def __init__(self, bid_repository: BidRepositoryBase, user_repository: UserRepositoryBase, operation_repository: OperationRepositoryBase, event_manager: EventManagerBase):
+    def __init__(self, bid_repository: BidRepositoryBase, user_repository: UserRepositoryBase, operation_repository: OperationRepositoryBase,
+                 event_manager: EventManagerBase):
         """
         Inicializacion del servicio de ofertas con los repositorios de oferta, usuario y operación.
 
