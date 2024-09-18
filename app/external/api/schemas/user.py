@@ -21,7 +21,7 @@ class UserInput(UserBase):
                     "username": "Fernanda Gonzales",
                     "email": "fernanda01@gmail.com",
                     "type": "Operator || Investor",
-                    "pasword": "fernanda01Investor"
+                    "password": "fernanda01Investor"
                 }
             ]
         }
