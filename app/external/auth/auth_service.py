@@ -3,7 +3,9 @@ from app.application.interfaces.user_service import UserService
 from app.external.auth.jwt_handler import create_access_token, verify_token
 from fastapi.security import OAuth2PasswordBearer
 from fastapi import Depends
-
+from typing import Annotated
+from pydantic import EmailStr
+from app.external.auth.exceptions import CredentialsException
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/user/auth/login")
 
 
@@ -30,6 +32,15 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
     return payload
 
 
+def verify_user(current_user: Annotated[dict, Depends(get_current_user)]):
+    try:
+        email: EmailStr = current_user.get("sub")
 
+        if email is None:
+            raise CredentialsException()
+        return email
+    
+    except Exception as error:
+        raise Exception(f'{error}')
 
 
