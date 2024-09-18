@@ -2,7 +2,8 @@ from app.application.events.event_manager import EventManager
 from app.external.data_access.repositories.json_user_repository import JsonUserRepository
 from app.external.data_access.repositories.json_operation_repository import JsonOperationRepository
 from app.external.data_access.repositories.json_bid_repository import JsonBidRepository
-
+from fastapi import Depends
+from typing import Annotated
 
 def get_json_user_repository():
     return JsonUserRepository()
