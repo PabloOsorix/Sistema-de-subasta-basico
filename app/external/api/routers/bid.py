@@ -63,7 +63,8 @@ def create_bid(bid_to_create: BidInput,
                    get_json_operation_repository),
                bid_repository: JsonBidRepository = Depends(
                    get_json_bid_repository),
-               current_user: dict = Depends(get_current_user)):
+               current_user: dict = Depends(get_current_user),
+               event_manager: EventManager = Depends(get_event_manager)):
 
     try:
 
@@ -74,7 +75,7 @@ def create_bid(bid_to_create: BidInput,
         bid_builder = BidBuilder()
         new_bid = BidCreateDTO.model_construct(**bid_to_create.model_dump())
         bid_service = BidService(
-            bid_repository, user_repository, operation_repository)
+            bid_repository, user_repository, operation_repository, event_manager)
         created_bid = bid_service.create_bid(new_bid, bid_builder)
         return created_bid
 
@@ -91,7 +92,8 @@ def get_bids_by_operation_id(operation_id: str, user_repository: JsonUserReposit
                                  get_json_operation_repository),
                              bid_repository: JsonBidRepository = Depends(
                                  get_json_bid_repository),
-                             current_user: dict = Depends(get_current_user)):
+                             current_user: dict = Depends(get_current_user),
+                             event_manager: EventManager = Depends(get_event_manager)):
 
     try:
 
@@ -100,7 +102,10 @@ def get_bids_by_operation_id(operation_id: str, user_repository: JsonUserReposit
             raise CredentialsException()
 
         bid_service = BidService(bid_repository=bid_repository,
-                                 user_repository=user_repository, operation_repository=operation_repository)
+                                 user_repository=user_repository,
+                                 operation_repository=operation_repository,
+                                 event_manager=event_manager
+                                 )
         operations = bid_service.get_bids_by_operation_id(
             operation_id, user_email)
         return operations
@@ -110,32 +115,3 @@ def get_bids_by_operation_id(operation_id: str, user_repository: JsonUserReposit
             content=jsonable_encoder({"error", f"{error}"}),
             status_code=status.HTTP_400_BAD_REQUEST,
         )
-
-
-"""
-@router.post("/delete/")
-def delete_operation(operation_id: str, user_id: str, user_repository: JsonUserRepository = Depends(get_json_user_repository),
-                     operation_repository: JsonOperationRepository = Depends(
-                         get_json_operation_repository),
-                     current_user: dict = Depends(get_current_user)) -> str:
-    try:
-
-        user_email = current_user.get("sub")
-        if user_email is None:
-            raise CredentialsException()
-
-        operation_service = OperationService(
-            operation_repository, user_repository)
-        operation_was_deleted = operation_service.delete(
-            user_id, operation_id, user_email)
-        return JSONResponse(
-            content=jsonable_encoder(
-                {"msg": "La operacion fue eliminada con exito"}),
-            status_code=status.HTTP_204_NO_CONTENT,
-        )
-
-    except Exception as error:
-        return JSONResponse(
-            content=jsonable_encoder({"error", f"{error}"}),
-            status_code=status.HTTP_400_BAD_REQUEST,
-        )"""
