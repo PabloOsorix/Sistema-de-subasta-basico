@@ -138,7 +138,7 @@ class BidService():
         query = {"operation_id": operation.id}
         bids = self.bid_repository.get(query)
         if bids is False:
-            raise ValueError("Error en la base de datos, intente nuevamente en unos minutos")
+            raise ValueError("Aun no hay ofertas creadas para esta operacion")
         if isinstance(bids, list):
             list_of_bids_to_return = []
             for operation in bids:
