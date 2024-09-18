@@ -1,13 +1,8 @@
 # Instrucciones de uso
 
-## 1. Clona el repositorio en tu ambiente local:
+## 1. Clonar:
 
-<div style="display:flex;justify-content: center;">
-  <img src="https://github.com/user-attachments/assets/a7b16c27-75b2-49d5-a73d-c5cb021e137c" alt="drawing" width="750"/>
-</div>
-
-copia el link como se sugiere en la imagen, luego introduce el suiguiente
-comando en tu terminar para clonar el repositorio.
+Introduce el suiguiente comando en tu terminar para clonar el repositorio.
 
 ``` bash
 git clone https://github.com/PabloOsorix/Sistema-de-subasta-basico.git
