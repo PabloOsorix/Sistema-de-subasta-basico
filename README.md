@@ -36,8 +36,15 @@ Deberas moverte al directorio app
 cd app/
 ```
 Una vez allí introduce el siguiente comando para iniciar el servidor en modo
-desarrollador, este desplegara la API realizada en fastAPI en el localhost:8000.
+desarrollador, este desplegara la API realizada en fastAPI en el localhost
+puerto 8000 (http://127.0.0.1:8000/).
 ``` bash
 fastapi dev main.py
 ```
 
+### Nota:
+Sugiero navegar la API a traves de la url http://127.0.0.1:8000/docs#/, la cual usa
+Swagger UI para mostrar los end-points.
+
+
+# Tests
