@@ -72,7 +72,7 @@ def get_all_available_operations(user_repository: JsonUserRepository = Depends(g
 
 
 
-@router.get("/{operation_id}", response_model=OperationOutDetail)
+@router.get("/detail/{operation_id}", response_model=OperationOutDetail)
 def get_detailed_operation_by_id(operation_id: str, user_repository: JsonUserRepository = Depends(get_json_user_repository),
                      operation_repository: JsonOperationRepository = Depends(get_json_operation_repository),
                      current_user: dict = Depends(get_current_user)):
