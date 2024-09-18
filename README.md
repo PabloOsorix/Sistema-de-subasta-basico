@@ -48,3 +48,14 @@ Swagger UI para mostrar los end-points.
 
 
 # Tests
+## Ejecucion
+Para correr los test disponibles de la aplicacion deberas moverte al directorio **tests**
+
+```
+Sistema-de-subasta-basico/tests
+```
+y luego ejecutar el comando: 
+```
+pytest unittest 
+```
+
