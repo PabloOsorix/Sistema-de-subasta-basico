@@ -130,7 +130,7 @@ class OperationService():
         query = {"status": "open"}
         operations = self.operation_repository.get(query)
         if operations is False:
-            raise ValueError("Error en la base de datos, intente nuevamente en unos minutos")
+            raise ValueError("No hay operacion disponibles en este momento, intente en unos minutos")
         if isinstance(operations, list):
             list_of_operations_to_return = []
             for operation in operations:
@@ -205,7 +205,7 @@ class OperationService():
         
         if operation_exists is False:
             raise ValueError("La operacion no fue encontrada en base de datos, verifique el operation_id e intente nuevamente")
-        elif operation_exists.state == "delete":
+        elif operation_exists.status == "delete":
             raise ValueError("La operacion ya ha sido eliminada")
             
         
