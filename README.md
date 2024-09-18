@@ -17,6 +17,10 @@ cd Sistema-de-subasta-basico/
 Debes crear y activar un nuevo ambiente virtual 
 ``` python
 python -m venv venv
+```
+
+Activa el ambiente virtual
+```
 source ./venv/bin/activate
 ```
 
