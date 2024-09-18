@@ -127,7 +127,7 @@ class BidService():
         if user_exists is False:
             raise ValueError("El usuario no ha sido econtrado en la base de datos, verifique el user_id e intente nuevamente")
         elif user_exists.type != "Operator":
-            raise ValueError("El usuario actual no tiene permitido crear este tipo de operaciones ya que no es de tipo Operator")
+            raise ValueError("El usuario actual no tiene permitido acceder a las ofertas de la operacion ya que no es de tipo Operator o no es el propietario de esta")
         
         operation = self.operation_repository.get(query={"id": operation_id})
         if operation is None or operation is False:
